@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chitkara University | Event Hub</title>
+    <link rel="icon" href="./images/cu-logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- NAV -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="events.html">Events</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admin.html">Admin</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-orb orb1"></div>
+            <div class="hero-orb orb2"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-bolt"></i> SPRING FEST 2026</span>
+            <h1 class="hero-title">Where <span class="accent-text">Memories</span><br>Are <span class="stroke-text">Made</span></h1>
+            <p class="hero-sub">Discover, connect, and celebrate with Chitkara's vibrant campus events. From tech fests to cultural nights — there's something for everyone.</p>
+            <div class="hero-buttons">
+                <a href="events.html" class="btn-primary"><i class="fas fa-calendar-check"></i> Explore Events</a>
+                <a href="gallery.html" class="btn-ghost"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-pill"><span class="stat-num">24+</span><span>Events This Month</span></div>
+                <div class="stat-pill"><span class="stat-num">2.5K+</span><span>Active Students</span></div>
+                <div class="stat-pill"><span class="stat-num">₹2L+</span><span>In Prizes</span></div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="event-float-card card-a">
+                <div class="fc-icon"><i class="fas fa-code"></i></div>
+                <div><strong>Tech Fest 2026</strong><span>Mar 15 • 300 seats</span></div>
+            </div>
+            <div class="event-float-card card-b">
+                <div class="fc-icon cultural"><i class="fas fa-music"></i></div>
+                <div><strong>Cultural Night</strong><span>Apr 20 • 500 seats</span></div>
+            </div>
+            <div class="event-float-card card-c">
+                <div class="fc-icon sports"><i class="fas fa-trophy"></i></div>
+                <div><strong>Sports Meet</strong><span>May 5 • 400 seats</span></div>
+            </div>
+            <div class="hero-circle-art">
+                <div class="pulse-ring r1"></div>
+                <div class="pulse-ring r2"></div>
+                <div class="pulse-ring r3"></div>
+                <div class="center-icon"><i class="fas fa-calendar-alt"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED EVENT -->
+    <section class="section container">
+        <div class="section-label"><span>HIGHLIGHT</span></div>
+        <div class="section-header">
+            <h2>Featured <span class="accent-text">Event</span></h2>
+            <p>Don't miss the biggest tech fest of the year</p>
+        </div>
+        <div class="featured-card">
+            <div class="featured-content">
+                <span class="tag-badge technical">TECHNICAL</span>
+                <h3>Tech Fest 2026: Code &amp; Create</h3>
+                <p>Join us for 3 days of coding competitions, robotics wars, workshops from Google engineers, and prizes worth ₹2 Lakhs!</p>
+               
+                <div class="featured-actions">
+                    <a href="login.html" class="btn-primary"><i class="fas fa-ticket-alt"></i> Register Now</a>
+                    <a href="events.html" class="btn-outline">View All Events</a>
+                </div>
+            </div>
+            <div class="featured-image">
+                <img src="https://www.chitkara.edu.in/wp-content/themes/chitkara/images/2026/home-page/slider/litfest-2026-banner-mob.webp" alt="Tech Fest 2026" loading="lazy">
+                <div class="fi-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK EVENTS PREVIEW -->
+    <section class="section container">
+        <div class="section-label"><span>UPCOMING</span></div>
+        <div class="section-header flex-header">
+            <div>
+                <h2>Upcoming <span class="accent-text">Events</span></h2>
+                <p>What's happening at Chitkara</p>
+            </div>
+            <a href="events.html" class="btn-outline">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="events-preview-grid" id="previewGrid"></div>
+    </section>
+
+    <!-- SPEAKERS -->
+    <section class="section container">
+        <div class="section-label"><span>SPEAKERS</span></div>
+        <div class="section-header">
+            <h2>Featured <span class="accent-text">Speakers</span></h2>
+            <p>Industry leaders and visionaries at Chitkara</p>
+        </div>
+        <div class="speakers-strip">
+            <div class="speaker-card"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Sarah Johnson"><div class="sc-info"><strong>Dr. Sarah Johnson</strong><span>AI Research Lead, Google</span></div></div>
+            <div class="speaker-card"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Mehta"><div class="sc-info"><strong>Rahul Mehta</strong><span>CTO, TechStart India</span></div></div>
+            <div class="speaker-card"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Kapoor"><div class="sc-info"><strong>Priya Kapoor</strong><span>Cultural Icon & Performer</span></div></div>
+            <div class="speaker-card"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Vikram Singh"><div class="sc-info"><strong>Vikram Singh</strong><span>National Sports Coach</span></div></div>
+            <div class="speaker-card"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Neha Gupta"><div class="sc-info"><strong>Neha Gupta</strong><span>Startup Mentor, Y Combinator</span></div></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section container">
+        <div class="cta-card">
+            <div class="cta-content">
+                <h2>Ready to Join the Fun?</h2>
+                <p>Create your account and register for events in seconds.</p>
+                <a href="login.html" class="btn-primary large"><i class="fas fa-rocket"></i> Get Started Free</a>
+            </div>
+            <div class="cta-art">
+                <div class="cta-orb"></div>
+                <i class="fas fa-graduation-cap cta-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+            <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+                <p>Your one-stop portal for all campus events at Chitkara University.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="events.html">Events</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="admin.html">Admin</a>
+            </div>
+            <div class="footer-links">
+                <h4>Account</h4>
+                <a href="login.html">Login</a>
+                <a href="login.html#register">Register</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Chandigarh, Punjab</p>
+                <p><i class="fas fa-envelope"></i> events@chitkara.edu.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 Chitkara University Event Hub. All rights reserved.</p></div>
+    </footer>
+
+    <button class="fab" id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="shared.js"></script>
+    <script>
+        // Preview grid (first 4 events)
+        const previewEvents = [
+            { name: "Tech Fest 2026", cat: "technical", date: "Mar 15", price: "FREE", desc: "Coding competitions & robotics wars", venue: "Main Auditorium", daysLeft: 10, img: "https://www.chitkara.edu.in/wp-content/themes/chitkara/images/2026/home-page/slider/litfest-2026-banner-mob.webp" },
+            { name: "Cultural Night 2026", cat: "cultural", date: "Apr 20", price: "₹100", desc: "Music, dance & drama performances", venue: "Open Air Theatre", daysLeft: 48, img: "https://www.chitkara.edu.in/wp-content/uploads/2022/08/cultural-night-banner.jpg" },
+            { name: "24-Hour Hackathon", cat: "workshop", date: "Mar 25", price: "FREE", desc: "Build innovative solutions", venue: "CS Department", daysLeft: 22, img: "https://www.chitkara.edu.in/wp-content/uploads/2018/04/26-hour-national-level-hackathon-%E2%80%98OctaHacks%E2%80%99-at-Chitkara-University.jpg" },
+            { name: "Annual Sports Meet", cat: "sports", date: "May 5", price: "₹50", desc: "Cricket, football, basketball & more", venue: "Sports Complex", daysLeft: 63, img: "https://www.chitkara.edu.in/wp-content/uploads/2024/07/Annual-Sports-Meet-banner.jpg" }
+        ];
+        const pg = document.getElementById('previewGrid');
+        previewEvents.forEach(ev => {
+            const card = document.createElement('div');
+            card.className = 'event-preview-card';
+            card.innerHTML = `
+                <div class="epc-img" style="background-image:url('${ev.img}')">
+                    <span class="price-badge ${ev.price==='FREE'?'free':''}">${ev.price}</span>
+                    <span class="cat-tag ${ev.cat}">${ev.cat}</span>
+                </div>
+                <div class="epc-body">
+                    <div class="epc-date"><i class="far fa-calendar-alt"></i> ${ev.date}, 2026</div>
+                    <h4>${ev.name}</h4>
+                    <p>${ev.desc}</p>
+                    <div class="epc-foot">
+                        <span><i class="fas fa-map-marker-alt"></i> ${ev.venue}</span>
+                        <span class="days-badge ${ev.daysLeft<=7?'urgent':''}">${ev.daysLeft}d left</span>
+                    </div>
+                    <a href="login.html" class="btn-card-reg">Register Now</a>
+                </div>`;
+            pg.appendChild(card);
+        });
+
+        // Countdown
+        function runCountdown() {
+            const target = new Date(2026, 2, 15);
+            const diff = target - new Date();
+            if (diff > 0) {
+                document.getElementById('cDays').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+                document.getElementById('cHours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+                document.getElementById('cMins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+                document.getElementById('cSecs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+            }
+        }
+        setInterval(runCountdown,1000); runCountdown();
+    </script>
+</body>
+</html>

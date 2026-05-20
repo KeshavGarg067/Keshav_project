@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Chitkara Event Hub</title>
+    <link rel="icon" href="./images/cu-logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admin.html" class="active">Admin</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <div class="admin-layout">
+        <!-- SIDEBAR -->
+        <div class="admin-sidebar">
+            <div style="padding:1.5rem 1.5rem 1rem;">
+                <div style="font-family:var(--font-display);font-size:.72rem;letter-spacing:2px;color:var(--text-sub);font-weight:700;margin-bottom:1rem;">MAIN MENU</div>
+            </div>
+            <a href="#overview" class="sidebar-link active"><i class="fas fa-chart-pie"></i> Overview</a>
+            <a href="#events-mgmt" class="sidebar-link"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="#registrations" class="sidebar-link"><i class="fas fa-users"></i> Registrations</a>
+            <a href="#analytics" class="sidebar-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+            <div class="sidebar-divider"></div>
+            <div style="padding:0 1.5rem;font-family:var(--font-display);font-size:.72rem;letter-spacing:2px;color:var(--text-sub);font-weight:700;margin-bottom:0.5rem;">MANAGE</div>
+            <a href="#" class="sidebar-link" onclick="showToast('Feature coming soon!','warning');return false;"><i class="fas fa-plus-circle"></i> Create Event</a>
+            <a href="#" class="sidebar-link" onclick="showToast('Feature coming soon!','warning');return false;"><i class="fas fa-bell"></i> Notifications</a>
+            <a href="#" class="sidebar-link" onclick="showToast('Feature coming soon!','warning');return false;"><i class="fas fa-cog"></i> Settings</a>
+            <div class="sidebar-divider"></div>
+            <a href="index.html" class="sidebar-link"><i class="fas fa-arrow-left"></i> Back to Site</a>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="admin-main">
+            <div class="admin-topbar" id="overview">
+                <div>
+                    <h1>Dashboard</h1>
+                    <span>Spring Fest 2026 — Overview</span>
+                </div>
+                <div style="display:flex;gap:0.75rem;align-items:center;">
+                    <span style="font-size:.85rem;color:var(--text-sub);background:var(--surface);padding:.5rem 1rem;border-radius:var(--radius-pill);border:1px solid var(--border);">
+                        <i class="fas fa-circle" style="color:#2e7d32;font-size:.6rem;"></i> Live: 3 events
+                    </span>
+                    <button class="btn-primary" style="font-size:.88rem;padding:.6rem 1.3rem;" onclick="showToast('Dashboard refreshed!','success')">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div><div class="stat-value" id="sTotalEvents">8</div><div class="stat-title">Total Events</div><div class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> +3 this month</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div><div class="stat-value" id="sTotalReg">1,055</div><div class="stat-title">Registrations</div><div class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> +24%</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-ticket-alt"></i></div>
+                    <div><div class="stat-value">1,730</div><div class="stat-title">Total Capacity</div><div class="stat-trend trend-down"><i class="fas fa-arrow-down"></i> 675 remaining</div></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                    <div><div class="stat-value">61%</div><div class="stat-title">Fill Rate</div><div class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> Above target</div></div>
+                </div>
+            </div>
+
+            <!-- CONTENT GRID -->
+            <div class="admin-content-grid" id="events-mgmt">
+                <!-- LEFT: EVENT LIST -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3><i class="fas fa-list-ul" style="color:var(--primary);margin-right:8px;"></i> Event Management</h3>
+                        <button class="btn-outline" style="font-size:.8rem;padding:.4rem .9rem;" onclick="showToast('Create event coming soon!','warning')"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                    <div id="eventRows"></div>
+                </div>
+
+                <!-- RIGHT: REGISTRATION BREAKDOWN -->
+                <div style="display:flex;flex-direction:column;gap:1.5rem;" id="registrations">
+                    <div class="admin-card">
+                        <div class="admin-card-header"><h3><i class="fas fa-chart-bar" style="color:var(--primary);margin-right:8px;"></i> Registration Progress</h3></div>
+                        <div class="admin-card-body" id="progressBars"></div>
+                    </div>
+                    <div class="admin-card" id="analytics">
+                        <div class="admin-card-header"><h3><i class="fas fa-info-circle" style="color:var(--primary);margin-right:8px;"></i> Quick Stats</h3></div>
+                        <div class="admin-card-body">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                                <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                                    <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--primary);">4</div>
+                                    <div style="font-size:.82rem;color:var(--text-sub);">Free Events</div>
+                                </div>
+                                <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                                    <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--primary);">4</div>
+                                    <div style="font-size:.82rem;color:var(--text-sub);">Paid Events</div>
+                                </div>
+                                <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                                    <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--primary);">3</div>
+                                    <div style="font-size:.82rem;color:var(--text-sub);">Live Now</div>
+                                </div>
+                                <div style="background:var(--surface2);border-radius:var(--radius-sm);padding:1rem;text-align:center;">
+                                    <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--primary);">5</div>
+                                    <div style="font-size:.82rem;color:var(--text-sub);">Upcoming</div>
+                                </div>
+                            </div>
+                            <div style="margin-top:1.5rem;padding:1.2rem;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius-sm);color:white;text-align:center;">
+                                <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:.3rem;">Overall Goal Progress</div>
+                                <div style="font-size:2rem;font-weight:800;color:var(--gold);">61%</div>
+                                <div style="font-size:.82rem;opacity:.8;">1,055 / 1,730 seats filled</div>
+                                <div style="height:6px;background:rgba(255,255,255,.2);border-radius:3px;margin-top:1rem;overflow:hidden;">
+                                    <div style="height:100%;background:var(--gold);border-radius:3px;width:61%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="fab" id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="shared.js"></script>
+    <script>
+        // Build event rows
+        const rowsContainer = document.getElementById('eventRows');
+        const liveEvents = [1, 4, 6];
+        eventsData.forEach(ev => {
+            const row = document.createElement('div');
+            row.className = 'event-row';
+            const isLive = liveEvents.includes(ev.id);
+            row.innerHTML = `
+                <div class="er-dot" style="${isLive?'background:#2e7d32;box-shadow:0 0 8px rgba(46,125,50,.5)':''}"></div>
+                <div class="er-info">
+                    <strong>${ev.name}</strong>
+                    <span>${ev.date}, 2026 &nbsp;·&nbsp; ${ev.venue}</span>
+                </div>
+                <span class="er-badge ${isLive?'live':'upcoming'}">${isLive?'Live':'Upcoming'}</span>
+                <span style="font-size:.82rem;color:var(--text-sub);min-width:60px;text-align:right;">${ev.reg}/${ev.cap}</span>`;
+            rowsContainer.appendChild(row);
+        });
+
+        // Progress bars
+        const pbContainer = document.getElementById('progressBars');
+        eventsData.forEach(ev => {
+            const pct = Math.round((ev.reg / ev.cap) * 100);
+            const div = document.createElement('div');
+            div.className = 'progress-item';
+            div.innerHTML = `
+                <div class="pi-header"><span class="pi-name">${ev.name}</span><span class="pi-val">${ev.reg}/${ev.cap} (${pct}%)</span></div>
+                <div class="pi-bar"><div class="pi-fill" style="width:${pct}%"></div></div>`;
+            pbContainer.appendChild(div);
+        });
+    </script>
+</body>
+</html>

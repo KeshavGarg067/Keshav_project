@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | Chitkara Event Hub</title>
+   <link rel="icon" href="./images/cu-logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+       <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="schedule.html" class="active">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admin.html">Admin</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+            <div class="section-label" style="margin-bottom:0.75rem"><span>CALENDAR 2026</span></div>
+            <h1>Event <span style="color:var(--gold)">Schedule</span></h1>
+            <p>Plan your month with our complete event calendar</p>
+        </div>
+    </div>
+
+    <div class="schedule-layout">
+        <div class="schedule-sidebar">
+            <div class="sidebar-nav" id="sidebarNav">
+                <div class="sn-item active" data-target="day1">
+                    <div class="sn-date">10</div>
+                    <div class="sn-info"><strong>March 2026</strong><span>2 events</span></div>
+                </div>
+                <div class="sn-item" data-target="day2">
+                    <div class="sn-date">15</div>
+                    <div class="sn-info"><strong>March 2026</strong><span>3 events</span></div>
+                </div>
+                <div class="sn-item" data-target="day3">
+                    <div class="sn-date">18</div>
+                    <div class="sn-info"><strong>March 2026</strong><span>1 event</span></div>
+                </div>
+                <div class="sn-item" data-target="day4">
+                    <div class="sn-date">25</div>
+                    <div class="sn-info"><strong>March 2026</strong><span>1 event</span></div>
+                </div>
+                <div class="sn-item" data-target="day5">
+                    <div class="sn-date">2</div>
+                    <div class="sn-info"><strong>April 2026</strong><span>1 event</span></div>
+                </div>
+                <div class="sn-item" data-target="day6">
+                    <div class="sn-date">20</div>
+                    <div class="sn-info"><strong>April 2026</strong><span>1 event</span></div>
+                </div>
+                <div class="sn-item" data-target="day7">
+                    <div class="sn-date">5</div>
+                    <div class="sn-info"><strong>May 2026</strong><span>1 event</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline" id="timeline">
+            <div class="timeline-day" id="day1">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>March 10, 2026</h3>
+                    <span>Monday</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">10:00 AM</div>
+                        <div class="te-details">
+                            <strong>Guest Lecture: Future of AI</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Seminar Hall &nbsp;|&nbsp; <i class="fas fa-users"></i> 150 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge technical">technical</span>
+                    </div>
+                    <div class="td-event">
+                        <div class="te-time">02:00 PM</div>
+                        <div class="te-details">
+                            <strong>Startup Pitch Workshop</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Innovation Hub &nbsp;|&nbsp; <i class="fas fa-users"></i> 50 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge workshop">workshop</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-day" id="day2">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>March 15, 2026</h3>
+                    <span>Saturday — Tech Fest Day 1</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">09:00 AM</div>
+                        <div class="te-details">
+                            <strong>Tech Fest 2026 Inauguration</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Main Auditorium &nbsp;|&nbsp; <i class="fas fa-users"></i> 300 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge technical">technical</span>
+                    </div>
+                    <div class="td-event">
+                        <div class="te-time">11:00 AM</div>
+                        <div class="te-details">
+                            <strong>Coding Competition Round 1</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> CS Lab Block &nbsp;|&nbsp; <i class="fas fa-users"></i> 200 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge technical">technical</span>
+                    </div>
+                    <div class="td-event">
+                        <div class="te-time">01:00 PM</div>
+                        <div class="te-details">
+                            <strong>Robotics Wars</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Sports Complex &nbsp;|&nbsp; <i class="fas fa-users"></i> 500 audience</span>
+                        </div>
+                        <span class="te-cat tag-badge technical">technical</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-day" id="day3">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>March 18, 2026</h3>
+                    <span>Tuesday</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">11:00 AM</div>
+                        <div class="te-details">
+                            <strong>MERN Stack Workshop</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Lab 301 &nbsp;|&nbsp; <i class="fas fa-users"></i> 50 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge workshop">workshop</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-day" id="day4">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>March 25, 2026</h3>
+                    <span>Tuesday</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">06:00 PM</div>
+                        <div class="te-details">
+                            <strong>24-Hour Hackathon Kickoff</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> CS Department &nbsp;|&nbsp; <i class="fas fa-users"></i> 100 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge workshop">workshop</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-day" id="day5">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>April 2, 2026</h3>
+                    <span>Thursday</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">04:00 PM</div>
+                        <div class="te-details">
+                            <strong>Alumni Meet 2026</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> College Lawn &nbsp;|&nbsp; <i class="fas fa-users"></i> 200 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge cultural">cultural</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-day" id="day6">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>April 20, 2026</h3>
+                    <span>Monday</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">06:00 PM</div>
+                        <div class="te-details">
+                            <strong>Cultural Night 2026</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Open Air Theatre &nbsp;|&nbsp; <i class="fas fa-users"></i> 500 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge cultural">cultural</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-day" id="day7">
+                <div class="td-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>May 5, 2026</h3>
+                    <span>Tuesday</span>
+                </div>
+                <div class="td-events">
+                    <div class="td-event">
+                        <div class="te-time">08:00 AM</div>
+                        <div class="te-details">
+                            <strong>Annual Sports Meet</strong>
+                            <span><i class="fas fa-map-marker-alt"></i> Sports Complex &nbsp;|&nbsp; <i class="fas fa-users"></i> 400 seats</span>
+                        </div>
+                        <span class="te-cat tag-badge sports">sports</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="fab" id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="shared.js"></script>
+    <script>
+        document.querySelectorAll('.sn-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sn-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                const target = document.getElementById(this.dataset.target);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

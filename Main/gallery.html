@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Chitkara Event Hub</title>
+    <link rel="icon" href="./images/cu-logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+       <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html" class="active">Gallery</a>
+            <a href="admin.html">Admin</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+            <div class="section-label" style="margin-bottom:0.75rem"><span>MEMORIES</span></div>
+            <h1>Event <span style="color:var(--gold)">Gallery</span></h1>
+            <p>Relive the best moments from Chitkara University's vibrant events</p>
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="filters-bar">
+        <button class="filter-btn active" data-filter="all">All Events</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+        <button class="filter-btn" data-filter="technical">Technical</button>
+        <button class="filter-btn" data-filter="festival">Festivals</button>
+    </div>
+
+    <div class="gallery-grid-full" id="galleryGrid"></div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lb-close" onclick="closeLb()"><i class="fas fa-times"></i></button>
+        <img class="lb-img" id="lbImg" src="" alt="">
+        <div class="lb-caption" id="lbCap"></div>
+    </div>
+
+    <button class="fab" id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="shared.js"></script>
+    <script>
+        const galleryData = [
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpWtxxRzphmRKQb1sPJdCHtXC6Z6bfDlfifw&s", title: "Valentine's Day 2026", sub: "Campus Celebration", cat: "cultural" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2014/03/holi_festival.jpg", title: "Holi Festival 2025", sub: "Colors & Joy", cat: "festival" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2022/01/lohri-celebration.jpg", title: "Lohri Celebration 2026", sub: "Traditional Festivities", cat: "festival" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2025/04/christmas-banner.jpg", title: "Christmas Carnival 2025", sub: "Winter Celebrations", cat: "cultural" },
+            { src: "https://www.chitkarauniversity.edu.in/images/Diwali-Charity-Fest-Nov-7th-2023/pic03.jpg", title: "Diwali Charity Fest 2025", sub: "Festival of Lights", cat: "festival" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpczOMB-XXaTwB7SWNlaKTbdY5QBcD_4P0Q&s", title: "Celebrity Performance", sub: "Sourabh Raaj Jain at B.Ed Event", cat: "cultural" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2018/04/26-hour-national-level-hackathon-%E2%80%98OctaHacks%E2%80%99-at-Chitkara-University.jpg", title: "OctaHacks Hackathon", sub: "26-Hour National Level", cat: "technical" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2022/08/cultural-night-banner.jpg", title: "Cultural Night 2022", sub: "Live Performances", cat: "cultural" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2024/07/Annual-Sports-Meet-banner.jpg", title: "Annual Sports Meet 2024", sub: "Champions at Play", cat: "technical" },
+            { src: "https://www.chitkara.edu.in/wp-content/themes/chitkara/images/2026/home-page/slider/litfest-2026-banner-mob.webp", title: "Lit Fest 2026", sub: "Literature & Arts", cat: "cultural" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2022/12/4.jpg", title: "Alumni Meet 2022", sub: "Reconnecting Roots", cat: "cultural" },
+            { src: "https://www.chitkara.edu.in/wp-content/uploads/2025/09/Protothon-AI-2025-banner.jpg", title: "Protothon AI 2025", sub: "AI Innovation Challenge", cat: "technical" },
+        ];
+
+        let currentFilter = 'all';
+        let filteredImages = [...galleryData];
+
+        function renderGallery(filter) {
+            currentFilter = filter;
+            filteredImages = filter === 'all' ? galleryData : galleryData.filter(g => g.cat === filter);
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+            filteredImages.forEach((item, i) => {
+                const el = document.createElement('div');
+                el.className = 'gallery-item-full';
+                el.innerHTML = `
+                    <img src="${item.src}" alt="${item.title}" loading="lazy">
+                    <div class="gallery-caption-full">
+                        <div class="gc-title">${item.title}</div>
+                        <div class="gc-sub">${item.sub}</div>
+                    </div>`;
+                el.addEventListener('click', () => openLb(i));
+                grid.appendChild(el);
+            });
+        }
+
+        function openLb(i) {
+            document.getElementById('lbImg').src = filteredImages[i].src;
+            document.getElementById('lbCap').textContent = filteredImages[i].title + ' — ' + filteredImages[i].sub;
+            document.getElementById('lightbox').classList.add('open');
+        }
+        function closeLb() { document.getElementById('lightbox').classList.remove('open'); }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+        document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLb(); });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderGallery(this.dataset.filter);
+            });
+        });
+
+        renderGallery('all');
+    </script>
+</body>
+</html>

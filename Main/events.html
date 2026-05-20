@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Chitkara Event Hub</title>
+    <link rel="icon" href="./images/cu-logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="events.html" class="active">Events</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admin.html">Admin</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+            <div class="section-label" style="margin-bottom:0.75rem"><span>SPRING FEST 2026</span></div>
+            <h1>Upcoming <span style="color:var(--gold)">Events</span></h1>
+            <p>Discover and register for the best events happening at Chitkara University</p>
+        </div>
+    </div>
+
+    <div class="filters-bar" id="filtersBar">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> All Events</button>
+        <button class="filter-btn" data-filter="technical"><i class="fas fa-code"></i> Technical</button>
+        <button class="filter-btn" data-filter="cultural"><i class="fas fa-music"></i> Cultural</button>
+        <button class="filter-btn" data-filter="sports"><i class="fas fa-trophy"></i> Sports</button>
+        <button class="filter-btn" data-filter="workshop"><i class="fas fa-tools"></i> Workshops</button>
+    </div>
+
+    <div class="events-grid" id="eventsGrid"></div>
+
+    <button class="fab" id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="shared.js"></script>
+    <script>
+        function buildGrid(filter) {
+            const grid = document.getElementById('eventsGrid');
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? eventsData : eventsData.filter(e => e.cat === filter);
+            if (filtered.length === 0) {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-sub);padding:3rem;">No events found.</p>';
+                return;
+            }
+            filtered.forEach(ev => {
+                const pct = Math.round((ev.reg / ev.cap) * 100);
+                const card = document.createElement('div');
+                card.className = 'event-card-full';
+                card.innerHTML = `
+                    <div class="ecf-img" style="background-image:url('${ev.img}')">
+                        <span class="price-badge ${ev.price==='FREE'?'free':''}">${ev.price}</span>
+                        <span class="cat-tag ${ev.cat}">${ev.cat}</span>
+                        ${ev.daysLeft <= 7 ? '<span class="days-badge urgent" style="position:absolute;top:10px;left:10px;background:rgba(230,81,0,0.9);color:white;padding:4px 12px;border-radius:100px;font-size:.75rem;font-weight:700;">⚡ ${ev.daysLeft}d left</span>' : ''}
+                    </div>
+                    <div class="ecf-body">
+                        <h3>${ev.name}</h3>
+                        <p>${ev.desc}</p>
+                        <div class="ecf-meta">
+                            <span><i class="far fa-calendar-alt"></i> ${ev.date}, 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${ev.venue}</span>
+                            <span><i class="far fa-clock"></i> ${ev.daysLeft} days left</span>
+                        </div>
+                        <div class="ecf-footer">
+                            <div class="reg-info">
+                                <span>${ev.reg}/${ev.cap} registered</span>
+                                <div class="reg-bar"><div class="reg-fill" style="width:${pct}%"></div></div>
+                            </div>
+                            <a href="login.html" class="btn-card-reg" style="width:auto;padding:0.6rem 1.3rem;">Register</a>
+                        </div>
+                    </div>`;
+                grid.appendChild(card);
+            });
+        }
+        buildGrid('all');
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                buildGrid(this.dataset.filter);
+            });
+        });
+    </script>
+</body>
+</html>

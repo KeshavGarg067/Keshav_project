@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Chitkara Event Hub</title>
+    <link rel="icon" href="./images/cu-logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: var(--bg); }
+        .auth-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+        .auth-visual { background: linear-gradient(135deg, #0a0820 0%, #1a0a2e 55%, #2d0a1a 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 3rem; position: relative; overflow: hidden; }
+        .auth-visual::before { content:''; position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(139,0,0,.3),transparent 70%); top:-150px; left:-150px; pointer-events:none; }
+        .auth-visual::after { content:''; position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(255,215,0,.12),transparent 70%); bottom:-100px; right:-100px; pointer-events:none; }
+        .av-content { position:relative; z-index:1; color:white; max-width:400px; }
+        .av-logo { display:flex; align-items:center; gap:12px; margin-bottom:3rem; text-decoration:none; }
+        .av-logo .uni-name { color:white; font-size:1.3rem; }
+        .av-content h2 { font-family:var(--font-display); font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:1rem; }
+        .av-content > p { color:rgba(255,255,255,.7); margin-bottom:2.5rem; font-size:1rem; }
+        .av-features { display:flex; flex-direction:column; gap:1rem; }
+        .av-feat { display:flex; align-items:center; gap:1rem; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:1rem 1.2rem; }
+        .av-feat i { font-size:1.2rem; color:var(--gold); width:20px; text-align:center; }
+        .av-feat strong { display:block; color:white; font-size:.95rem; }
+        .av-feat span { color:rgba(255,255,255,.6); font-size:.8rem; }
+        .form-panel { display:none; }
+        .form-panel.active { display:block; }
+        @media(max-width:900px){ .auth-visual{display:none;} .auth-page{grid-template-columns:1fr;} }
+    </style>
+</head>
+<body>
+    <div class="auth-page">
+        <!-- LEFT VISUAL -->
+        <div class="auth-visual">
+            <div class="av-content">
+               <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+                <h2>Join the <span style="color:var(--gold)">Campus</span> Experience</h2>
+                <p>Create your account and never miss an event again.</p>
+                <div class="av-features">
+                    <div class="av-feat"><i class="fas fa-ticket-alt"></i><div><strong>Easy Registration</strong><span>Register for events in one click</span></div></div>
+                    <div class="av-feat"><i class="fas fa-bell"></i><div><strong>Smart Reminders</strong><span>Get notified before every event</span></div></div>
+                    <div class="av-feat"><i class="fas fa-history"></i><div><strong>Event History</strong><span>Track all your past and upcoming events</span></div></div>
+                    <div class="av-feat"><i class="fas fa-certificate"></i><div><strong>Certificates</strong><span>Download e-certificates after events</span></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT FORM -->
+        <div class="auth-form-side">
+            <div class="auth-box">
+               <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./images/cu-logo.png" alt="Chitkara University Logo">
+            </div>
+            <div class="logo-text"><span class="event-tag">EVENT HUB</span></div>
+        </a>
+
+                <div class="tab-switcher">
+                    <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+                    <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div class="form-panel active" id="panelLogin">
+                    <h2>Welcome back!</h2>
+                    <p class="sub">Sign in to your Event Hub account</p>
+
+                    <div class="social-btns">
+                        <button class="btn-social google" onclick="showToast('Google login coming soon!','warning')"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google</button>
+                        <button class="btn-social github" onclick="showToast('GitHub login coming soon!','warning')"><i class="fab fa-github"></i> GitHub</button>
+                    </div>
+
+                    <div class="divider">or sign in with email</div>
+
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-wrap">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-input" id="loginEmail" placeholder="you@chitkara.edu.in" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-wrap">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-input" id="loginPassword" placeholder="Your password" required>
+                                <button type="button" class="eye-toggle" onclick="toggleEye(this)"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-extras">
+                            <label class="checkbox-label"><input type="checkbox"> Remember me</label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="btn-auth"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+                    </form>
+                    <p class="switch-link" style="margin-top:1.5rem;">Don't have an account? <a href="#" onclick="switchTab('register');return false;">Create one free</a></p>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div class="form-panel" id="panelRegister">
+                    <h2>Create Account</h2>
+                    <p class="sub">Join thousands of Chitkara students</p>
+
+                    <form id="registerForm" onsubmit="handleRegister(event)">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <div class="input-wrap">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-input" placeholder="First name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <div class="input-wrap">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-input" placeholder="Last name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>University Email</label>
+                            <div class="input-wrap">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-input" placeholder="you@chitkara.edu.in" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Enrollment Number</label>
+                            <div class="input-wrap">
+                                <i class="fas fa-id-card"></i>
+                                <input type="text" class="form-input" placeholder="e.g. 2300000000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-wrap">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-input" id="regPwd" placeholder="Min 8 characters" required>
+                                <button type="button" class="eye-toggle" onclick="toggleEye(this)"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label" style="align-items:flex-start;gap:10px;cursor:pointer;">
+                                <input type="checkbox" required style="margin-top:3px;">
+                                <span style="font-size:.88rem;color:var(--text-sub);">I agree to the <a href="#" style="color:var(--primary);">Terms of Service</a> and <a href="#" style="color:var(--primary);">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-auth"><i class="fas fa-user-plus"></i> Create Account</button>
+                    </form>
+                    <p class="switch-link" style="margin-top:1.5rem;">Already have an account? <a href="#" onclick="switchTab('login');return false;">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        // Check if #register hash
+        if (window.location.hash === '#register') switchTab('register');
+
+        function switchTab(tab) {
+            document.getElementById('panelLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('panelRegister').classList.toggle('active', tab === 'register');
+            document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+        }
+
+        function toggleEye(btn) {
+            const input = btn.previousElementSibling;
+            if (input.type === 'password') { input.type = 'text'; btn.innerHTML = '<i class="fas fa-eye-slash"></i>'; }
+            else { input.type = 'password'; btn.innerHTML = '<i class="fas fa-eye"></i>'; }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const pwd = document.getElementById('loginPassword').value;
+            if (!email || !pwd) { showToast('Please fill all fields', 'error'); return; }
+            showToast('Logging you in...', 'success');
+            setTimeout(() => window.location.href = 'index.html', 1200);
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            showToast('Account created! Welcome to Event Hub 🎉', 'success');
+            setTimeout(() => window.location.href = 'index.html', 1500);
+        }
+    </script>
+</body>
+</html>
